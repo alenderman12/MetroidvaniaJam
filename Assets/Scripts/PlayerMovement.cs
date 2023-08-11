@@ -8,14 +8,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpStrength;
     [SerializeField] private float maxJumpTime;
     private float jumpTime;
-    private float lastYposition;
     private bool isGrounded;
+    private bool jumpButtonReleased;
 
     private Rigidbody2D rigidBody;
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        lastYposition = transform.position.y;
     }
 
     // Update is called once per frame
@@ -24,16 +23,18 @@ public class PlayerMovement : MonoBehaviour
         Move(Input.GetAxisRaw("Horizontal") * moveSpeed, rigidBody.velocity.y);
         if (Input.GetKeyDown(KeyCode.Z) && isGrounded)
         {
+            jumpButtonReleased = false;
             jumpTime = 0;
             Move(Input.GetAxisRaw("Horizontal") * moveSpeed, jumpStrength);
         }
-        if (Input.GetKey(KeyCode.Z) && jumpTime <= maxJumpTime)
+        if (Input.GetKey(KeyCode.Z) && jumpTime <= maxJumpTime && !jumpButtonReleased)
         {
             Move(Input.GetAxisRaw("Horizontal") * moveSpeed, jumpStrength);
             jumpTime += Time.deltaTime;
         }
         else if (Input.GetKeyUp(KeyCode.Z) || jumpTime >= maxJumpTime)
         {
+            jumpButtonReleased = true;
             rigidBody.gravityScale = 3;
         }
     }
@@ -43,13 +44,19 @@ public class PlayerMovement : MonoBehaviour
         rigidBody.velocity = new Vector2(x, y);
     }
 
-    private void FixedUpdate()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isGrounded)
+        if (collision.name != "DownAttack")
         {
-            rigidBody.gravityScale = 1;
+            isGrounded = true;
         }
-        isGrounded = (lastYposition == transform.position.y);
-        lastYposition = transform.position.y;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.name != "DownAttack")
+        {
+            isGrounded = false;
+        }
     }
 }
