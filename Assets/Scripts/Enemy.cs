@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private EnemyType enemyData;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "AttackZone")
@@ -16,7 +17,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            print("Hit");
+            collision.gameObject.GetComponent<PlayerMovement>().Knockback(transform.position, enemyData.knockbackForce);
         }
     }
 }
