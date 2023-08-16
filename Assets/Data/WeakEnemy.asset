@@ -15,4 +15,4 @@ MonoBehaviour:
   enemyLife: 0
   enemyDamage: 0
   knockbackForce: 300
-  enemySpeed: 0
+  enemySpeed: 3

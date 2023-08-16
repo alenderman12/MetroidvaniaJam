@@ -14,20 +14,19 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetAxisRaw("Horizontal") != 0)
+        {
+            animator.SetFloat("xDirection", Input.GetAxisRaw("Horizontal"));
+        }
         if (Input.GetKey(KeyCode.X))
         {
             animator.SetBool("attackPressed", true);
-            if (Input.GetAxisRaw("Horizontal") != 0)
-            {
-                animator.SetFloat("xDirection", Input.GetAxisRaw("Horizontal"));
-            }
-            StartCoroutine(WaitForAnimation());
+            Invoke("SetAnimationFalse", .1f);
         }
     }
 
-    private IEnumerator WaitForAnimation()
+    private void SetAnimationFalse()
     {
-        yield return new WaitForEndOfFrame();
         animator.SetBool("attackPressed", false);
     }
 }

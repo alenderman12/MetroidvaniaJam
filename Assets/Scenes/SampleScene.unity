@@ -183,8 +183,8 @@ PolygonCollider2D:
     - - {x: -1.3889638, y: 0.40044743}
       - {x: -1.7604522, y: 0.029225796}
       - {x: -1.4571365, y: -0.40931547}
-      - {x: -0.501402, y: -0.47926295}
-      - {x: -0.49786252, y: 0.508868}
+      - {x: -0.5219728, y: -0.48611987}
+      - {x: -0.5218618, y: 0.4814403}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +239,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7.02
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -497,8 +497,8 @@ PolygonCollider2D:
     - - {x: -1.358986, y: 0.43042505}
       - {x: -1.7804375, y: 0.049210876}
       - {x: -1.3672035, y: -0.43929303}
-      - {x: -0.501402, y: -0.47926295}
-      - {x: -0.49786252, y: 0.508868}
+      - {x: -0.5185443, y: -0.47240603}
+      - {x: -0.51500493, y: 0.49515414}
 --- !u!1 &795100172
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,12 +509,12 @@ GameObject:
   m_Component:
   - component: {fileID: 795100177}
   - component: {fileID: 795100176}
-  - component: {fileID: 795100175}
   - component: {fileID: 795100174}
   - component: {fileID: 795100173}
   - component: {fileID: 795100178}
   - component: {fileID: 795100179}
   - component: {fileID: 795100180}
+  - component: {fileID: 795100181}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -559,32 +559,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &795100175
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795100172}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &795100176
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -702,6 +676,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2442cb3fd5ec04a866b61b39ecf3f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &795100181
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795100172}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1203138614
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,7 +864,7 @@ MonoBehaviour:
   m_Follow: {fileID: 795100177}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 7.02
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1183,8 +1173,8 @@ GameObject:
   - component: {fileID: 1610497320}
   - component: {fileID: 1610497319}
   - component: {fileID: 1610497318}
-  - component: {fileID: 1610497317}
   - component: {fileID: 1610497321}
+  - component: {fileID: 1610497322}
   m_Layer: 6
   m_Name: Square (5)
   m_TagString: Untagged
@@ -1192,32 +1182,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!61 &1610497317
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1610497316}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 4c1b9f4b89317a745875f87abe6c690d, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &1610497318
 Rigidbody2D:
   serializedVersion: 4
@@ -1226,7 +1190,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610497316}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1319,6 +1283,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 114c31ad532ef1b4e8e86f6ff0d4ea80, type: 2}
+--- !u!58 &1610497322
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610497316}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+<<<<<<< HEAD
+  m_IsTrigger: 1
+=======
+  m_IsTrigger: 0
+>>>>>>> 480588d86e5b0e1762d7087b067461130681d53b
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+<<<<<<< HEAD
+  m_Radius: 6.710642
+=======
+  m_Radius: 0.5
+>>>>>>> 480588d86e5b0e1762d7087b067461130681d53b
 --- !u!1 &1864541048
 GameObject:
   m_ObjectHideFlags: 3
@@ -1405,8 +1393,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0.192
-  m_LookaheadSmoothing: 30
+  m_LookaheadTime: 0.529
+  m_LookaheadSmoothing: 2.4
   m_LookaheadIgnoreY: 0
   m_XDamping: 1
   m_YDamping: 1
@@ -1419,7 +1407,7 @@ MonoBehaviour:
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.8
+  m_SoftZoneWidth: 0.88
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
   m_BiasY: 0
