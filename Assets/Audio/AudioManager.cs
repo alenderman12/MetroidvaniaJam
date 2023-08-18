@@ -60,7 +60,11 @@ public class AudioManager : MonoBehaviour
         {
             PlayerPrefs.SetFloat(MusicVolumeKey, DefaultVolume);
         }
+        UpdateAudioPlayerPrefs();
+    }
 
+    private void UpdateAudioPlayerPrefs()
+    {
         // Load saved volume settings
         savedSFXVolume = PlayerPrefs.GetFloat(SFXVolumeKey);
         savedMusicVolume = PlayerPrefs.GetFloat(MusicVolumeKey);
@@ -75,5 +79,37 @@ public class AudioManager : MonoBehaviour
             return;
         }
         sound.source.Play();
+    }
+
+    public void UpdateSoundVolumes()
+    {
+        UpdateAudioPlayerPrefs();
+        foreach (Sound sound in sounds)
+        {
+            // Find the correct AudioSource
+            string clipName = sound.clip.name;
+            AudioSource currentAudioSource = null; // Initialize to null
+            AudioSource[] audioSources = GetComponents<AudioSource>();
+            foreach (AudioSource audioSource in audioSources)
+            {
+                if (audioSource.clip != null && audioSource.clip.name == clipName)
+                {
+                    currentAudioSource = audioSource; // Assign the matching AudioSource
+                    break; // Break out of the loop once a match is found
+                }
+            }
+
+            if (currentAudioSource != null)
+            {
+                if (sound.isSFX)
+                {
+                    currentAudioSource.volume = sound.volume * savedSFXVolume;
+                }
+                else if (sound.isMusic)
+                {
+                    currentAudioSource.volume = sound.volume * savedMusicVolume;
+                }
+            }
+        }
     }
 }

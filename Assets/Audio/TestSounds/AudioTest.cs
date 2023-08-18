@@ -5,7 +5,9 @@ using UnityEngine;
 public class AudioTest : MonoBehaviour
 {
     public string soundName;
+    [Range(0.0f, 1.0f)]
     public float SFXVolume;
+    [Range(0.0f, 1.0f)]
     public float MusicVolume;
     public bool testVolume;
 
@@ -15,8 +17,7 @@ public class AudioTest : MonoBehaviour
     {
         if (testVolume)
         {
-            PlayerPrefs.SetFloat("SFXVolume", SFXVolume);
-            PlayerPrefs.SetFloat("MusicVolume", MusicVolume);
+            SetPrefs();
         }
     }
     void Start()
@@ -25,8 +26,23 @@ public class AudioTest : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void OnValidate()
     {
-        
+        SetPrefs();
+        FindObjectOfType<AudioManager>().UpdateSoundVolumes();
+    }
+
+    private void SetPrefs()
+    {
+        if (testVolume)
+        {
+            PlayerPrefs.SetFloat("SFXVolume", SFXVolume);
+            PlayerPrefs.SetFloat("MusicVolume", MusicVolume);
+        } else
+        {
+            // Load saved volume settings
+            SFXVolume = PlayerPrefs.GetFloat("SFXVolume");
+            MusicVolume = PlayerPrefs.GetFloat("MusicVolume");
+        }
     }
 }
