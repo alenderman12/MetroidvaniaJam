@@ -9,8 +9,17 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     public Sound[] sounds;
 
+    private const string SFXVolumeKey = "SFXVolume";
+    private const string MusicVolumeKey = "MusicVolume";
+    private const float DefaultVolume = 1.0f;
+
+    private float savedSFXVolume;
+    private float savedMusicVolume;
+
     void Awake()
     {
+        GetAudioPlayerPrefs();
+
         // Checks if an instance of the AudioManager already exists in a scene.
         // Used when transitioning between scenes to avoid restarting music.
         if (instance == null)
@@ -27,10 +36,34 @@ public class AudioManager : MonoBehaviour
         {
             sound.source = gameObject.AddComponent<AudioSource>();
             sound.source.clip = sound.clip;
-            sound.source.volume = sound.volume;
             sound.source.pitch = sound.pitch;
             sound.source.loop = sound.loop;
+            if (sound.isSFX)
+            {
+                sound.source.volume = sound.volume * savedSFXVolume;
+            } else if (sound.isMusic)
+            {
+                sound.source.volume = sound.volume * savedMusicVolume;
+            }
         }
+    }
+
+    private void GetAudioPlayerPrefs()
+    {
+        // Check if SFXVolume and MusicVolume keys exist
+        if (!PlayerPrefs.HasKey(SFXVolumeKey))
+        {
+            PlayerPrefs.SetFloat(SFXVolumeKey, DefaultVolume);
+        }
+
+        if (!PlayerPrefs.HasKey(MusicVolumeKey))
+        {
+            PlayerPrefs.SetFloat(MusicVolumeKey, DefaultVolume);
+        }
+
+        // Load saved volume settings
+        savedSFXVolume = PlayerPrefs.GetFloat(SFXVolumeKey);
+        savedMusicVolume = PlayerPrefs.GetFloat(MusicVolumeKey);
     }
 
     public void PlaySound(string name)

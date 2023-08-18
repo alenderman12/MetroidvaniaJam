@@ -16,6 +16,10 @@ public class Sound
 
     public bool loop;
 
+    public bool isSFX;
+
+    public bool isMusic;
+
     // Creates an AudioSource component for this sound.
     // AudioManager object attaches components for each sound to itself via AudioManager script.
     [HideInInspector]
