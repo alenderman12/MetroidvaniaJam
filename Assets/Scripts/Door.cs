@@ -133,9 +133,7 @@ public class Door : MonoBehaviour
 				startPosition.y,
 				0);
 		}
-		Debug.Log(startPosition);
-		Debug.Log(midPosition);
-		Debug.Log(endPosition);
+
 		transitionCountdown = 0f;
 		transitionState = TransitionState.Start;
 
